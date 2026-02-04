@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Test Suite for Bookmark Manager Application">
+    <title>Test Suite - Bookmark Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="test-styles.css">
+</head>
+
+<body>
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 11 12 14 22 4"></polyline>
+                        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                    </svg>
+                    <h1>Test Suite</h1>
+                </div>
+                <div class="header-actions">
+                    <a href="index.html" class="btn btn-secondary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        <span>Back to App</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Test Summary -->
+            <section class="test-summary">
+                <div class="summary-card">
+                    <div class="summary-stats">
+                        <div class="stat">
+                            <span class="stat-value" id="total-tests">10</span>
+                            <span class="stat-label">Total Tests</span>
+                        </div>
+                        <div class="stat stat-pass">
+                            <span class="stat-value" id="passed-tests">0</span>
+                            <span class="stat-label">Passed</span>
+                        </div>
+                        <div class="stat stat-fail">
+                            <span class="stat-value" id="failed-tests">0</span>
+                            <span class="stat-label">Failed</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-value" id="pass-rate">0%</span>
+                            <span class="stat-label">Pass Rate</span>
+                        </div>
+                    </div>
+                    <div class="summary-actions">
+                        <button id="run-all-btn" class="btn btn-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                            Run All Tests
+                        </button>
+                        <button id="reset-btn" class="btn btn-secondary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polyline points="23 4 23 10 17 10"></polyline>
+                                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                            </svg>
+                            Reset Tests
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Test Cases -->
+            <section class="test-cases">
+                <h2>Test Cases</h2>
+                <div id="test-list" class="test-list"></div>
+            </section>
+
+            <!-- Console Output -->
+            <section class="console-section">
+                <div class="console-header">
+                    <h3>Console Output</h3>
+                    <button id="clear-console-btn" class="btn btn-ghost btn-sm">Clear</button>
+                </div>
+                <div id="console-output" class="console-output"></div>
+            </section>
+
+            <!-- Hidden Test Area - This contains a mini version of the app for testing -->
+            <div id="test-app-container" style="display: none;">
+                <div id="test-bookmarks-grid"></div>
+                <div id="test-empty-state" class="empty-state hidden">
+                    <h3>No Bookmarks Yet</h3>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Bookmark Manager. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="index.html" class="footer-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        Back to App
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="test-runner.js"></script>
+</body>
+
+</html>

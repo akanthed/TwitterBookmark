@@ -1,0 +1,25 @@
+{
+    "name": "tweet-bookmark-manager",
+    "short_name": "Bookmarks",
+    "description": "Save, organize, and search your favorite tweets with custom tags and filters",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#1D9BF0",
+    "theme_color": "#1D9BF0",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231D9BF0'><path d='M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z'/></svg>",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        }
+    ],
+    "categories": [
+        "productivity",
+        "utilities",
+        "social"
+    ],
+    "lang": "en",
+    "dir": "ltr"
+}

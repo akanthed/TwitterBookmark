@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary SEO Meta Tags -->
+    <title>Tweet Bookmark Manager - Save, Organize & Search Your Twitter Bookmarks | Free Online Tool</title>
+    <meta name="title"
+        content="Tweet Bookmark Manager - Save, Organize & Search Your Twitter Bookmarks | Free Online Tool">
+    <meta name="description"
+        content="The best free Twitter/X bookmark manager. Save tweets with full content, organize with custom tags, filter by type (threads, images, videos), search instantly, and export your collection. No signup required!">
+    <meta name="keywords"
+        content="twitter bookmark manager, tweet organizer, save tweets, twitter bookmarks, x bookmark manager, tweet saver, bookmark organizer, twitter tools, tweet archive, social media bookmarks, twitter bookmark app, free bookmark manager">
+    <meta name="author" content="Akshay Kanthed">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow">
+    <link rel="canonical" href="https://tweet-bookmark-manager.vercel.app/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tweet-bookmark-manager.vercel.app/">
+    <meta property="og:title" content="Tweet Bookmark Manager - Save & Organize Your Twitter Bookmarks">
+    <meta property="og:description"
+        content="The best free Twitter/X bookmark manager. Save tweets with full content, organize with custom tags, filter by type, and search instantly. No signup required!">
+    <meta property="og:image" content="https://tweet-bookmark-manager.vercel.app/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Tweet Bookmark Manager">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://tweet-bookmark-manager.vercel.app/">
+    <meta name="twitter:title" content="Tweet Bookmark Manager - Save & Organize Your Twitter Bookmarks">
+    <meta name="twitter:description"
+        content="The best free Twitter/X bookmark manager. Save tweets with full content, organize with tags, filter by type, and search instantly!">
+    <meta name="twitter:image" content="https://tweet-bookmark-manager.vercel.app/og-image.png">
+    <meta name="twitter:creator" content="@akshaykanthed">
+
+    <!-- Additional SEO -->
+    <meta name="theme-color" content="#1D9BF0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Tweet Bookmarks">
+    <meta name="application-name" content="Tweet Bookmark Manager">
+    <meta name="msapplication-TileColor" content="#1D9BF0">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231D9BF0'><path d='M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z'/></svg>">
+    <link rel="apple-touch-icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231D9BF0'><path d='M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z'/></svg>">
+
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://publish.twitter.com">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Tweet Bookmark Manager",
+        "alternateName": ["Twitter Bookmark Manager", "X Bookmark Manager", "Tweet Saver"],
+        "description": "The best free Twitter/X bookmark manager. Save tweets with full content, organize with custom tags, filter by type (threads, images, videos), search instantly, and export your collection.",
+        "url": "https://tweet-bookmark-manager.vercel.app/",
+        "applicationCategory": "ProductivityApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": [
+            "Save tweets with full content",
+            "Auto-fetch tweet data from Twitter/X",
+            "Organize with custom tags",
+            "Filter by content type (threads, images, videos, links)",
+            "Full-text search",
+            "Export and import bookmarks",
+            "Works offline with localStorage",
+            "No signup required",
+            "Beautiful dark mode interface"
+        ],
+        "screenshot": "https://tweet-bookmark-manager.vercel.app/og-image.png",
+        "author": {
+            "@type": "Person",
+            "name": "Akshay Kanthed"
+        },
+        "datePublished": "2026-02-04",
+        "softwareVersion": "1.0.0"
+    }
+    </script>
+
+    <!-- FAQ Structured Data for Rich Results -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How do I save a tweet bookmark?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Simply paste any Twitter/X URL (e.g., https://x.com/user/status/123...) into the input field and click 'Add Bookmark'. The app will automatically fetch the tweet content, author, and metadata."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is this bookmark manager free?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! Tweet Bookmark Manager is completely free to use. No signup, no subscription, no hidden costs. Your data is stored locally in your browser."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Where is my bookmark data stored?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "All bookmarks are stored in your browser's localStorage. This means your data stays on your device and is never sent to any server. You can export your bookmarks as a JSON file for backup."
+                }
+            }
+        ]
+    }
+    </script>
+</head>
+
+<body>
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Fetching Tweet Loading Overlay -->
+    <div id="fetch-loading-overlay" class="fetch-loading-overlay hidden">
+        <div class="fetch-loading-content">
+            <div class="fetch-loading-animation">
+                <div class="fetch-spinner">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24"
+                        fill="currentColor" class="fetch-twitter-icon">
+                        <path
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
+                </div>
+                <div class="fetch-pulse-ring"></div>
+                <div class="fetch-pulse-ring fetch-pulse-ring-2"></div>
+            </div>
+            <h3 class="fetch-loading-title">Fetching Tweet...</h3>
+            <p class="fetch-loading-quote" id="loading-quote">"Knowledge is power."</p>
+            <p class="fetch-loading-author" id="loading-author">— Francis Bacon</p>
+            <div class="fetch-progress-bar">
+                <div class="fetch-progress-fill" id="fetch-progress"></div>
+            </div>
+            <p class="fetch-loading-tip">Connecting to Twitter...</p>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="delete-modal" class="modal hidden">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <div class="modal-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 6h18"></path>
+                    <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                    <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                </svg>
+            </div>
+            <h3>Delete Bookmark?</h3>
+            <p id="delete-modal-message">This action cannot be undone.</p>
+            <div class="modal-actions">
+                <button id="cancel-delete-btn" class="btn btn-secondary">Cancel</button>
+                <button id="confirm-delete-btn" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tweet Content Modal (for capturing tweet text) -->
+    <div id="tweet-modal" class="modal hidden">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content modal-lg">
+            <button id="close-tweet-modal-btn" class="modal-close-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="tweet-modal-header">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"
+                    class="twitter-icon">
+                    <path
+                        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+                <h2>Add Tweet Bookmark</h2>
+            </div>
+
+            <div class="tweet-preview-card" id="tweet-preview">
+                <div class="tweet-preview-header">
+                    <div class="tweet-avatar" id="preview-avatar">
+                        <span id="preview-initial">?</span>
+                    </div>
+                    <div class="tweet-author-info">
+                        <span class="tweet-display-name" id="preview-name">Loading...</span>
+                        <span class="tweet-username" id="preview-username">@username</span>
+                    </div>
+                </div>
+                <div class="tweet-preview-content" id="preview-content">
+                    Tweet content will appear here...
+                </div>
+            </div>
+
+            <form id="tweet-form" class="tweet-form">
+                <div class="form-group">
+                    <label for="tweet-text-input">Tweet Content <span class="required">*</span></label>
+                    <textarea id="tweet-text-input" class="form-textarea" rows="4"
+                        placeholder="Paste the tweet text here...&#10;&#10;Tip: Copy the tweet text from Twitter/X and paste it here"></textarea>
+                    <p class="form-hint">Copy the tweet text directly from Twitter/X</p>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="tweet-author-input">Display Name</label>
+                        <input type="text" id="tweet-author-input" class="form-input" placeholder="e.g., Elon Musk">
+                    </div>
+                    <div class="form-group">
+                        <label for="tweet-date-input">Tweet Date</label>
+                        <input type="date" id="tweet-date-input" class="form-input">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="tweet-type-input">Content Type</label>
+                    <select id="tweet-type-input" class="form-select">
+                        <option value="auto">Auto-detect</option>
+                        <option value="text">Text</option>
+                        <option value="thread">Thread 🧵</option>
+                        <option value="image">Image 🖼️</option>
+                        <option value="video">Video 🎬</option>
+                        <option value="link">Link 🔗</option>
+                    </select>
+                </div>
+
+                <input type="hidden" id="tweet-url-input">
+                <input type="hidden" id="tweet-username-input">
+
+                <div class="modal-actions">
+                    <button type="button" id="cancel-tweet-btn" class="btn btn-secondary">Cancel</button>
+                    <button type="submit" class="btn btn-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        Save Bookmark
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Help Modal -->
+    <div id="help-modal" class="modal hidden">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content modal-lg">
+            <button id="close-help-btn" class="modal-close-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <h2>📚 How to Use Bookmark Manager</h2>
+
+            <div class="help-section">
+                <h4>Adding Tweet Bookmarks</h4>
+                <p>1. Paste a Twitter/X URL in the input field</p>
+                <p>2. A modal will open asking for the tweet content</p>
+                <p>3. Copy the tweet text from Twitter and paste it</p>
+                <p>4. Optionally set the author name and date</p>
+                <p><strong>Supported URL formats:</strong></p>
+                <ul>
+                    <li><code>https://twitter.com/username/status/123...</code></li>
+                    <li><code>https://x.com/username/status/123...</code></li>
+                </ul>
+            </div>
+
+            <div class="help-section">
+                <h4>Content Types</h4>
+                <p>Bookmarks are automatically tagged based on detected content:</p>
+                <ul>
+                    <li><span class="tag tag-thread">Thread</span> - Multi-tweet threads (contains 🧵 or "1/")</li>
+                    <li><span class="tag tag-image">Image</span> - URLs with /photo/</li>
+                    <li><span class="tag tag-video">Video</span> - URLs with /video/</li>
+                    <li><span class="tag tag-link">Link</span> - Content with external links</li>
+                    <li><span class="tag tag-text">Text</span> - Plain text content</li>
+                </ul>
+            </div>
+
+            <div class="help-section">
+                <h4>Keyboard Shortcuts</h4>
+                <ul>
+                    <li><kbd>/</kbd> - Focus the search bar</li>
+                    <li><kbd>Esc</kbd> - Clear search and close modals</li>
+                    <li><kbd>N</kbd> - Add new bookmark (focus input)</li>
+                </ul>
+            </div>
+
+            <div class="help-section">
+                <h4>Import & Export</h4>
+                <p>Use the <strong>Export</strong> button to download all bookmarks as a JSON file. You can later
+                    <strong>Import</strong> this file to restore your bookmarks on any device.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    <h1>Bookmark Manager</h1>
+                </div>
+                <div class="header-actions">
+                    <button id="help-btn" class="btn btn-ghost" title="Help">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
+                        <span>Help</span>
+                    </button>
+                    <div class="bookmark-counter">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        <span id="bookmark-count">0</span> bookmarks
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Add Bookmark Section -->
+            <section class="add-section">
+                <div class="add-card">
+                    <h2>Add a New Tweet Bookmark</h2>
+                    <p class="add-subtitle">Paste a Twitter/X URL to save a tweet</p>
+                    <form id="add-bookmark-form" class="add-form">
+                        <div class="input-group">
+                            <input type="text" id="bookmark-input" class="form-input"
+                                placeholder="Paste tweet URL (e.g., https://x.com/user/status/123...)"
+                                autocomplete="off">
+                            <button type="submit" class="btn btn-primary" id="add-bookmark-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                                <span>Add Bookmark</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Controls Section -->
+            <section class="controls-section">
+                <div class="controls-row">
+                    <div class="search-wrapper">
+                        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        <input type="text" id="search-input" class="search-input"
+                            placeholder="Search bookmarks... (Press / to focus)">
+                        <button id="clear-search-btn" class="clear-search-btn hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="sort-wrapper">
+                        <label for="sort-select">Sort by:</label>
+                        <select id="sort-select" class="form-select">
+                            <option value="newest">Date Added (Newest)</option>
+                            <option value="oldest">Date Added (Oldest)</option>
+                            <option value="az">Alphabetical (A-Z)</option>
+                            <option value="za">Alphabetical (Z-A)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="filter-row">
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="thread"><span class="filter-icon">🧵</span>
+                            Threads</button>
+                        <button class="filter-btn" data-filter="image"><span class="filter-icon">🖼️</span>
+                            Images</button>
+                        <button class="filter-btn" data-filter="video"><span class="filter-icon">🎬</span>
+                            Videos</button>
+                        <button class="filter-btn" data-filter="link"><span class="filter-icon">🔗</span> Links</button>
+                        <button class="filter-btn" data-filter="text"><span class="filter-icon">📝</span> Text</button>
+                    </div>
+                    <div class="bulk-actions">
+                        <button id="export-btn" class="btn btn-secondary btn-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Export
+                        </button>
+                        <label class="btn btn-secondary btn-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="17 8 12 3 7 8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                            </svg>
+                            Import
+                            <input type="file" id="import-input" accept=".json" hidden>
+                        </label>
+                        <button id="bulk-delete-btn" class="btn btn-danger btn-sm hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M3 6h18"></path>
+                                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                            </svg>
+                            Delete Selected (<span id="selected-count">0</span>)
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bookmarks Grid -->
+            <section class="bookmarks-section">
+                <div id="empty-state" class="empty-state hidden">
+                    <div class="empty-state-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3>👋 Welcome to Tweet Bookmark Manager!</h3>
+                    <p class="empty-state-subtitle">Save your favorite tweets with full content, not just links.</p>
+
+                    <div class="empty-state-demo">
+                        <p class="demo-label">Try it now! Click to add a sample tweet:</p>
+                        <button id="try-sample-btn" class="btn btn-primary btn-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="currentColor">
+                                <path
+                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                            </svg>
+                            Add Sample Tweet
+                        </button>
+                    </div>
+
+                    <div class="empty-state-tips">
+                        <h4>⌨️ Keyboard Shortcuts:</h4>
+                        <ul>
+                            <li><kbd>N</kbd> Focus the URL input</li>
+                            <li><kbd>/</kbd> Focus search bar</li>
+                            <li><kbd>Esc</kbd> Close modals</li>
+                        </ul>
+                    </div>
+
+                    <div class="empty-state-features">
+                        <div class="feature-item">
+                            <span class="feature-icon">🔖</span>
+                            <span>Auto-fetch tweet content</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🏷️</span>
+                            <span>Custom tags</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🔍</span>
+                            <span>Instant search</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">📤</span>
+                            <span>Export/Import</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="loading-state" class="loading-state hidden">
+                    <div class="spinner"></div>
+                    <p>Loading bookmarks...</p>
+                </div>
+                <div id="bookmarks-grid" class="bookmarks-grid"></div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-main">
+                    <p class="footer-brand">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        <strong>Tweet Bookmark Manager</strong>
+                    </p>
+                    <p class="footer-tagline">Save, organize, and search your favorite tweets</p>
+                </div>
+                <div class="footer-credits">
+                    <p>Made with ❤️ by <strong>Akshay Kanthed</strong></p>
+                    <p class="footer-year">&copy; 2026 All rights reserved</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/akanthed" target="_blank" rel="noopener noreferrer" class="footer-link"
+                        title="GitHub">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
+                    </a>
+                    <a href="https://x.com/akshaykanthed" target="_blank" rel="noopener noreferrer" class="footer-link"
+                        title="Twitter/X">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/akshay-kanthed/" target="_blank" rel="noopener noreferrer"
+                        class="footer-link" title="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                            fill="currentColor">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
+                    </a>
+                    <span class="footer-divider">|</span>
+                    <a href="test-suite.html" class="footer-link footer-link-text">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 11 12 14 22 4"></polyline>
+                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                        </svg>
+                        Test Suite
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

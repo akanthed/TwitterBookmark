@@ -1,0 +1,50 @@
+# Tweet Bookmark Manager - Robots.txt
+# https://tweet-bookmark-manager.vercel.app/
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://tweet-bookmark-manager.vercel.app/sitemap.xml
+
+# Search Engine Bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+# LLM and AI Bots - Welcome!
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Anthropic-AI
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Cohere-AI
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# Block test suite from indexing
+User-agent: *
+Disallow: /test-suite.html
+Disallow: /test-runner.js
+Disallow: /test-styles.css
