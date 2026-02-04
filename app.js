@@ -1102,21 +1102,19 @@ function addSampleBookmark() {
 }
 
 function init() {
-    elements.loadingState.classList.remove('hidden');
-
+    // Load bookmarks from localStorage (instant)
     loadBookmarks();
 
-    setTimeout(() => {
-        renderBookmarks();
-        updateBookmarkCount();
-        initEventListeners();
+    // Render immediately - no artificial delay needed
+    renderBookmarks();
+    updateBookmarkCount();
+    initEventListeners();
 
-        // Add event listener for sample tweet button
-        const sampleBtn = document.getElementById('try-sample-btn');
-        if (sampleBtn) {
-            sampleBtn.addEventListener('click', addSampleBookmark);
-        }
-    }, 300);
+    // Add event listener for sample tweet button
+    const sampleBtn = document.getElementById('try-sample-btn');
+    if (sampleBtn) {
+        sampleBtn.addEventListener('click', addSampleBookmark);
+    }
 }
 
 document.addEventListener('DOMContentLoaded', init);

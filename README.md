@@ -1,10 +1,10 @@
-# Tweet Bookmark Manager
+# TweetStash
 
 > **The best free Twitter/X bookmark manager** - Save tweets with full content, organize with custom tags, filter by type, and search instantly. No signup required!
 
-🔗 **Live Demo**: [tweet-bookmark-manager.vercel.app](https://tweet-bookmark-manager.vercel.app/)
+🔗 **Live Demo**: [tweetstash.vercel.app](https://tweetstash.vercel.app/)
 
-![Tweet Bookmark Manager](og-image.png)
+![TweetStash](og-image.png)
 
 ## ✨ Features
 
@@ -23,10 +23,10 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/akanthed/tweet-bookmark-manager.git
+git clone https://github.com/akanthed/tweetstash.git
 
 # Navigate to the directory
-cd tweet-bookmark-manager
+cd tweetstash
 
 # Start a local server
 npx serve .
@@ -36,7 +36,7 @@ npx serve .
 
 ### Deploy to Vercel
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/akanthed/tweet-bookmark-manager)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/akanthed/tweetstash)
 
 Or deploy manually:
 
@@ -75,7 +75,7 @@ vercel
 ## 📁 Project Structure
 
 ```
-tweet-bookmark-manager/
+tweetstash/
 ├── index.html          # Main application
 ├── app.js              # Application logic
 ├── styles.css          # Styling

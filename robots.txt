@@ -1,12 +1,12 @@
-# Tweet Bookmark Manager - Robots.txt
-# https://tweet-bookmark-manager.vercel.app/
+# TweetStash - Robots.txt
+# https://tweetstash.vercel.app/
 
 # Allow all crawlers
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://tweet-bookmark-manager.vercel.app/sitemap.xml
+Sitemap: https://tweetstash.vercel.app/sitemap.xml
 
 # Search Engine Bots
 User-agent: Googlebot

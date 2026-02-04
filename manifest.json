@@ -1,6 +1,6 @@
 {
-    "name": "tweet-bookmark-manager",
-    "short_name": "Bookmarks",
+    "name": "TweetStash",
+    "short_name": "TweetStash",
     "description": "Save, organize, and search your favorite tweets with custom tags and filters",
     "start_url": "/",
     "display": "standalone",
