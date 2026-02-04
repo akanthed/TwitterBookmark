@@ -1303,6 +1303,8 @@ h4 {
 .tweet-preview-content {
     color: var(--gray-600);
     font-style: italic;
+    white-space: pre-wrap;
+    word-wrap: break-word;
 }
 
 #preview-initial {

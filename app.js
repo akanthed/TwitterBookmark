@@ -8,8 +8,8 @@ const STORAGE_KEY = 'bookmark_manager_data';
 
 // CORS Proxies to try (in order of preference)
 const CORS_PROXIES = [
-    'https://api.allorigins.win/raw?url=',
     'https://corsproxy.io/?',
+    'https://api.allorigins.win/raw?url=',
     'https://api.codetabs.com/v1/proxy?quest='
 ];
 
@@ -302,81 +302,81 @@ async function fetchTweetOEmbed(tweetUrl) {
     // Try each CORS proxy until one works
     for (const proxy of CORS_PROXIES) {
         try {
+            // Signal to abort fetch if it takes too long
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+
             const response = await fetch(proxy + encodeURIComponent(oembedUrl), {
                 method: 'GET',
+                signal: controller.signal,
                 headers: {
                     'Accept': 'application/json'
                 }
             });
 
+            clearTimeout(timeoutId);
+
             if (response.ok) {
                 const data = await response.json();
                 return data;
+            } else {
+                console.warn(`Proxy ${proxy} returned status: ${response.status}`);
             }
         } catch (e) {
-            console.log(`Proxy ${proxy} failed:`, e.message);
+            const errorMsg = e.name === 'AbortError' ? 'timeout' : e.message;
+            console.log(`Proxy ${proxy} failed (${errorMsg})`);
             continue;
         }
     }
 
     // All proxies failed
-    throw new Error('Could not fetch tweet data');
+    throw new Error('Could not fetch tweet data from any partner. Twitter may be blocking requests right now.');
 }
 
 function parseOEmbedHtml(html) {
-    // Create a temporary element to parse the HTML
     const temp = document.createElement('div');
     temp.innerHTML = html;
 
-    // First, find the main tweet block (usually inside <blockquote class="twitter-tweet">)
-    const blockquote = temp.querySelector('blockquote');
-    const root = blockquote || temp;
+    const bq = temp.querySelector('blockquote.twitter-tweet') || temp.querySelector('blockquote') || temp;
 
-    // Replace <br> tags with a unique placeholder to ensure we catch them
-    root.querySelectorAll('br').forEach(br => {
+    // 1. Convert <br> to \n
+    bq.querySelectorAll('br').forEach(br => {
         br.replaceWith(document.createTextNode('\n'));
     });
 
-    // Extract text from paragraphs while preserving internal line breaks
-    const paragraphs = root.querySelectorAll('p');
+    // 2. Identify all text-containing block elements (leaf nodes or paragraphs)
+    const allBlocks = bq.querySelectorAll('p, div');
     let tweetText = '';
 
-    if (paragraphs.length > 0) {
-        paragraphs.forEach((p, index) => {
-            // Get text content which now includes the newlines we injected for <br>
-            const paragraphText = p.textContent || p.innerText || '';
-            tweetText += paragraphText;
-
-            // Add spacing between paragraphs
-            if (index < paragraphs.length - 1) {
-                tweetText += '\n\n';
+    if (allBlocks.length > 0) {
+        const texts = [];
+        allBlocks.forEach(block => {
+            // Only take text from blocks that don't contain other p/div tags (leaf blocks)
+            // or if it's a direct paragraph child of the blockquote
+            if (block.querySelector('p, div') === null || block.parentElement === bq) {
+                const txt = block.textContent.trim();
+                if (txt && !texts.includes(txt)) {
+                    texts.push(txt);
+                }
             }
         });
+        tweetText = texts.join('\n\n');
     } else {
-        // Fallback if no paragraphs are found
-        tweetText = root.textContent || root.innerText || '';
+        tweetText = bq.textContent || '';
     }
 
-    // Clean up the text
-    tweetText = tweetText.trim();
+    // Standard cleaners
+    const authorLinePattern = /—\s+[^(]+\(@\w+\)\s+[\w\s,]+$/;
 
-    // Remove the "— Author (@username) Date" line which is usually the last paragraph 
-    // or at the end of the blockquote
-    const authorLinePattern = /\n?—\s*[^(]+\(@\w+\)\s*[\w\s,]+$/;
-    tweetText = tweetText.replace(authorLinePattern, '').trim();
-
-    // Remove t.co links and pic.twitter.com links
-    tweetText = tweetText.replace(/https?:\/\/t\.co\/\w+/gi, '');
-    tweetText = tweetText.replace(/pic\.twitter\.com\/\w+/gi, '');
-
-    // Cleanup excessive whitespace but strictly preserve single and double newlines
-    tweetText = tweetText.split('\n')
-        .map(line => line.trim())
+    return tweetText.trim()
+        .replace(authorLinePattern, '')
+        .replace(/https?:\/\/t\.co\/\w+/gi, '')
+        .replace(/pic\.twitter\.com\/\w+/gi, '')
+        .split('\n')
+        .map(l => l.trim())
         .join('\n')
         .replace(/\n{3,}/g, '\n\n')
         .trim();
-
-    return tweetText;
 }
 
 function extractAuthorFromOEmbed(data) {
@@ -526,6 +526,9 @@ async function handleAddBookmark(input) {
         return;
     }
 
+    if (isLoading) return;
+    isLoading = true;
+
     // Show beautiful loading overlay with quotes
     setButtonLoading(true);
     showFetchLoadingOverlay();
@@ -564,6 +567,8 @@ async function handleAddBookmark(input) {
         // Fallback to manual entry modal
         showToast('Could not auto-fetch tweet. Please enter details manually.', 'info');
         showTweetModal(trimmedInput, parsed);
+    } finally {
+        isLoading = false;
     }
 }
 
