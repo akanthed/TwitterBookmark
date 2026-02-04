@@ -328,30 +328,53 @@ function parseOEmbedHtml(html) {
     const temp = document.createElement('div');
     temp.innerHTML = html;
 
-    // Extract text content (removing links and formatting)
-    const paragraphs = temp.querySelectorAll('p');
-    let tweetText = '';
-    paragraphs.forEach(p => {
-        tweetText += p.textContent + '\n';
+    // First, find the main tweet block (usually inside <blockquote class="twitter-tweet">)
+    const blockquote = temp.querySelector('blockquote');
+    const root = blockquote || temp;
+
+    // Replace <br> tags with a unique placeholder to ensure we catch them
+    root.querySelectorAll('br').forEach(br => {
+        br.replaceWith(document.createTextNode('\n'));
     });
+
+    // Extract text from paragraphs while preserving internal line breaks
+    const paragraphs = root.querySelectorAll('p');
+    let tweetText = '';
+
+    if (paragraphs.length > 0) {
+        paragraphs.forEach((p, index) => {
+            // Get text content which now includes the newlines we injected for <br>
+            const paragraphText = p.textContent || p.innerText || '';
+            tweetText += paragraphText;
+
+            // Add spacing between paragraphs
+            if (index < paragraphs.length - 1) {
+                tweetText += '\n\n';
+            }
+        });
+    } else {
+        // Fallback if no paragraphs are found
+        tweetText = root.textContent || root.innerText || '';
+    }
 
     // Clean up the text
     tweetText = tweetText.trim();
 
-    // Remove the "— Author (@username) Date" line at the end
+    // Remove the "— Author (@username) Date" line which is usually the last paragraph 
+    // or at the end of the blockquote
     const authorLinePattern = /\n?—\s*[^(]+\(@\w+\)\s*[\w\s,]+$/;
     tweetText = tweetText.replace(authorLinePattern, '').trim();
 
-    // Remove t.co links (Twitter's URL shortener) - they're not useful to display
-    tweetText = tweetText.replace(/https?:\/\/t\.co\/\w+/gi, '').trim();
+    // Remove t.co links and pic.twitter.com links
+    tweetText = tweetText.replace(/https?:\/\/t\.co\/\w+/gi, '');
+    tweetText = tweetText.replace(/pic\.twitter\.com\/\w+/gi, '');
 
-    // Remove pic.twitter.com links
-    tweetText = tweetText.replace(/pic\.twitter\.com\/\w+/gi, '').trim();
-
-    // Clean up multiple spaces and newlines
-    tweetText = tweetText.replace(/\n{3,}/g, '\n\n');
-    tweetText = tweetText.replace(/  +/g, ' ');
-    tweetText = tweetText.trim();
+    // Cleanup excessive whitespace but strictly preserve single and double newlines
+    tweetText = tweetText.split('\n')
+        .map(line => line.trim())
+        .join('\n')
+        .replace(/\n{3,}/g, '\n\n')
+        .trim();
 
     return tweetText;
 }
@@ -678,8 +701,8 @@ function createTweetCard(bookmark) {
     const initial = (bookmark.username || bookmark.displayName || 'U').charAt(0).toUpperCase();
     const avatarColor = getAvatarColor(bookmark.username || bookmark.displayName);
 
-    // Format the tweet text with line breaks preserved
-    const formattedText = escapeHtml(bookmark.tweetText || '').replace(/\n/g, '<br>');
+    // Tweet text is displayed with white-space: pre-wrap in CSS to preserve line breaks
+    const tweetTextContent = escapeHtml(bookmark.tweetText || '');
 
     card.innerHTML = `
         <div class="tweet-card-header">
@@ -698,7 +721,7 @@ function createTweetCard(bookmark) {
             </div>
         </div>
         <div class="tweet-card-content">
-            <div class="tweet-text">${formattedText}</div>
+            <div class="tweet-text">${tweetTextContent}</div>
         </div>
         <div class="tweet-card-footer">
             <div class="tweet-card-tags">

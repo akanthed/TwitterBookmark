@@ -539,7 +539,20 @@ h4 {
 .tweet-card:hover {
     box-shadow: var(--shadow-xl);
     transform: translateY(-2px);
-    border-color: var(--primary-200);
+    border-color: var(--primary-300);
+}
+
+.tweet-card-actions {
+    opacity: 0.6;
+    transition: opacity var(--transition-base);
+}
+
+.tweet-card:hover .tweet-card-actions {
+    opacity: 1;
+}
+
+.tweet-card-actions .btn:hover {
+    transform: scale(1.1);
 }
 
 @keyframes fadeIn {
@@ -651,7 +664,7 @@ h4 {
     color: var(--gray-800);
     line-height: 1.5;
     white-space: pre-wrap;
-    word-break: break-word;
+    word-wrap: break-word;
     font-size: var(--font-size-base);
 }
 
